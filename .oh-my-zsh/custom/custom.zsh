@@ -17,7 +17,7 @@ alias o="xdg-open"
 alias m="ncmpcpp --screen=visualizer"
 alias e=vim
 alias se=sudoedit
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 export server="13.76.83.15"
 

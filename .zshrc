@@ -69,6 +69,8 @@ plugins=(
     zsh-autosuggestions
     zsh-completions
     vi-mode
+    fzf
+    emoji
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,7 +92,7 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -123,6 +125,6 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-# Enable fuzzi search
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+# source "${VIRTUAL_ENV}/bin/activate"
+# fi

@@ -25,7 +25,9 @@ super + {Next,Prior}
 # Circulate focused locally
 alt + {_,shift} + Tab
     bspc node -f {next.local,prev.local}
-
+# Select all windows
+super + a
+    bspc node -f @/
 #
 # resize tiled/floating
 #

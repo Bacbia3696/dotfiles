@@ -1,6 +1,10 @@
 ! URxvt config
-URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Semibold:size=13:minsize=False, xft:Dejavu Sans:style=Medium:size=11
-URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Black:size=13:minsize=False, xft:Dejavu Sans:style=Bold:size=11
+URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Semibold:size=13:minsize=False, xft:Dejavu Sans:style=Medium:size=11,xft:Symbola,xft:Noto Emoji:minspace=False
+URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Black:size=13:minsize=False, xft:Dejavu Sans:style=Bold:size=11,xft:Symbola,xft:Noto Emoji:minspace=False
+/* URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Semibold:size=13:minsize=False, xft:Dejavu Sans:style=Medium:size=11 */
+/* URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Black:size=13:minsize=False, xft:Dejavu Sans:style=Bold:size=11 */
+
+
 URxvt.scrollBar: false
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0

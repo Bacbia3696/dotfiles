@@ -140,6 +140,10 @@ endif
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'vim-scripts/dbext.vim'
+Plug '/usr/share/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 " }}}
 " Colors {{{
@@ -224,7 +228,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " for better indentation
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
@@ -253,10 +257,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " disable Ex mode
 :map Q <Nop>
 " paste from system clipboard
-noremap <C-v> "+]p:set nopaste<CR> 
+" noremap <C-v> "+]p:set nopaste<CR> 
 vnoremap <C-c> "+y
 " enable mouse support
 set mouse=a
 " EMMET vim config
 let g:user_emmet_leader_key=','
+" auto format
+noremap <F3> :Autoformat<CR>
 " vim:foldmethod=marker:foldlevel=0

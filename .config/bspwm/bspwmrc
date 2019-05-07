@@ -25,7 +25,7 @@ bspc config presel_feedback_color "#BD93F9"
 
 # Monocule
 # bspc config borderless_monocle true
-bspc config gapless_monocle    true
+# bspc config gapless_monocle    true
 bspc config single_monocle     true
 
 # Float
