@@ -106,7 +106,7 @@ export ARCHFLAGS="-arch x86_64"
 # disable zsh-hist verify
 setopt no_hist_verify
 
-# Faster key switching vi mode
+# Config vi mode
 export KEYTIMEOUT=1
 
 # Start tmux by default
@@ -125,6 +125,4 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-# if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-# source "${VIRTUAL_ENV}/bin/activate"
-# fi
+# xev

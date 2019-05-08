@@ -51,17 +51,14 @@ nnoremap <leader>m :set filetype?<CR>
 nnoremap <leader>w :w !sudo tee %<CR>
 "nnoremap <leader>m :silent make\|redraw!\|cw<CR>
 "nnoremap <leader>h :A<CR>
-"nnoremap <leader>ev :vsp $MYVIMRC<CR>
-"nnoremap <leader>et :exec ":vsp /Users/dblack/notes/vim/" . strftime('%m-%d-%y') . ".md"<CR>
-"nnoremap <leader>ez :vsp ~/.zshrc<CR>
-"nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev :vsp ~/.vimrc<CR>
 "nnoremap <leader>l :call <SID>ToggleNumber()<CR>
 "nnoremap <leader><space> :noh<CR>
 "nnoremap <leader>s :mksession<CR>
-"nnoremap <leader>a :Ag 
-"nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-"nnoremap <leader>1 :set number!<CR>
-"nnoremap <leader>d :GoDoc 
+nnoremap <leader>a :Ag 
+nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
+nnoremap <leader>1 :set number!<CR>
+nnoremap <leader>d :GoDoc 
 "nnoremap <leader>t :TestFile<CR>
 "nnoremap <leader>r :call <SID>RunFile()<CR>
 "nnoremap <leader>b :call <SID>BuildFile()<CR>
@@ -125,7 +122,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
-Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'lervag/vimtex'
 Plug 'tpope/vim-surround'
 Plug 'tkhren/vim-fake'
