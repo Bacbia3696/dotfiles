@@ -51,7 +51,6 @@ nnoremap <leader>m :set filetype?<CR>
 nnoremap <leader>w :w !sudo tee %<CR>
 "nnoremap <leader>m :silent make\|redraw!\|cw<CR>
 "nnoremap <leader>h :A<CR>
-nnoremap <leader>ev :vsp ~/.vimrc<CR>
 "nnoremap <leader>l :call <SID>ToggleNumber()<CR>
 "nnoremap <leader><space> :noh<CR>
 "nnoremap <leader>s :mksession<CR>
@@ -66,10 +65,10 @@ nnoremap <leader>d :GoDoc
 " }}}
 
 " CtrlP {{{
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
+" let g:ctrlp_match_window = 'bottom,order:ttb'
+" let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
@@ -81,6 +80,7 @@ augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
     autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
+    autocmd BufEnter *.tex setlocal filetype=tex
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
@@ -122,7 +122,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
-Plug 'xuhdev/vim-latex-live-preview'
+Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
 Plug 'lervag/vimtex'
 Plug 'tpope/vim-surround'
 Plug 'tkhren/vim-fake'
@@ -262,4 +262,8 @@ set mouse=a
 let g:user_emmet_leader_key=','
 " auto format
 noremap <F3> :Autoformat<CR>
+" auto pair set up
+au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
+au FileType html     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
 " vim:foldmethod=marker:foldlevel=0
+
