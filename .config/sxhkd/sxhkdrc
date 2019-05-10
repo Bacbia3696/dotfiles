@@ -128,7 +128,7 @@ super + Return
 	urxvt
 # Web browser
 super + {_,shift + }w
-    google-chrome-stable {_,-incognito} --force-device-scale-factor=1.15
+    google-chrome-stable {_,--app=https://youtube.com} --force-device-scale-factor=1.15
 # File manager
 super + shift + f
     pcmanfm
