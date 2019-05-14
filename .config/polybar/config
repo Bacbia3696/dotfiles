@@ -2,7 +2,7 @@
 foreground     = #FFFFFF
 foreground-alt = #666666
 background         = #66282A36
-background-focused = #66000000
+background-focused = #668080FF
 background-urgent  = #66FF0000
 red    = #FF0000
 green  = #00FF00

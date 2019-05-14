@@ -111,6 +111,8 @@ super + ctrl + r
 {_,ctrl + ,alt + }Print
     maim {_,-s,-i $(xdotool getactivewindow)} --noopengl | \
     xclip -selection clipboard -t image/png -i
+shift + Print
+    maim -s --noopengl ~/Pictures/Screenshots/$(date +%s).png
 
 ################
 # Quick launch #
@@ -128,7 +130,7 @@ super + Return
 	urxvt
 # Web browser
 super + {_,shift + }w
-    google-chrome-stable {_,--app=https://youtube.com} --force-device-scale-factor=1.15
+    google-chrome-stable {_,--app=https://youtube.com}
 # File manager
 super + shift + f
     pcmanfm

@@ -1,4 +1,4 @@
-" Douglas Black
+"A Douglas Black
 " Misc {{{
 set backspace=indent,eol,start
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
@@ -123,7 +123,7 @@ Plug 'tpope/vim-commentary'
 Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 Plug 'tpope/vim-surround'
 Plug 'tkhren/vim-fake'
 Plug 'sjl/gundo.vim'
@@ -141,6 +141,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'vim-scripts/dbext.vim'
 Plug '/usr/share/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 " }}}
 " Colors {{{
@@ -265,5 +266,5 @@ noremap <F3> :Autoformat<CR>
 " auto pair set up
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 au FileType html     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
-" vim:foldmethod=marker:foldlevel=0
 
+" vim:foldmethod=marker:foldlevel=0
