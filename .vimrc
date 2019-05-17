@@ -1,9 +1,3 @@
-"A Douglas Black
-" Misc {{{
-set backspace=indent,eol,start
-let g:vimwiki_list = [{'path': '~/.wiki/'}]
-" set clipboard=unnamedplus
-" }}}
 " Spaces & Tabs {{{
 set tabstop=4           " 4 space tab
 set expandtab           " use spaces for tabs
@@ -40,8 +34,6 @@ set foldlevelstart=10   " start with fold level of 1
 nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
-" inoremap kj <esc>
-" inoremap jk <esc>
 " }}}
 " Leader Shortcuts {{{
 let mapleader=","
@@ -49,26 +41,10 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>l :LLPStartPreview<CR>
 nnoremap <leader>m :set filetype?<CR>
 nnoremap <leader>w :w !sudo tee %<CR>
-"nnoremap <leader>m :silent make\|redraw!\|cw<CR>
-"nnoremap <leader>h :A<CR>
-"nnoremap <leader>l :call <SID>ToggleNumber()<CR>
-"nnoremap <leader><space> :noh<CR>
-"nnoremap <leader>s :mksession<CR>
 nnoremap <leader>a :Ag 
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 nnoremap <leader>1 :set number!<CR>
 nnoremap <leader>d :GoDoc 
-"nnoremap <leader>t :TestFile<CR>
-"nnoremap <leader>r :call <SID>RunFile()<CR>
-"nnoremap <leader>b :call <SID>BuildFile()<CR>
-"vnoremap <leader>y "+y
-" }}}
-
-" CtrlP {{{
-" let g:ctrlp_match_window = 'bottom,order:ttb'
-" let g:ctrlp_switch_buffer = 0
-" let g:ctrlp_working_path_mode = 0
-" let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
@@ -79,7 +55,6 @@ let g:syntastic_python_python_exec = 'python3'
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
-    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
     autocmd BufEnter *.tex setlocal filetype=tex
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
@@ -110,94 +85,30 @@ set undolevels=100
 " }}}
 " Vim Plug {{{
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'sjl/badwolf'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
-Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
 Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug '/usr/share/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 " }}}
 " Colors {{{
 syntax enable           " enable syntax processing
-" colorscheme default
 colorscheme badwolf
 " }}}
-" airline {{{
-set laststatus=2
-" let g:airline_theme = 'dracula'
-let g:airline_left_sep = ''
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_sep = ''
-" }}}
 " Custom Functions {{{
-function! <SID>ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
-" strips trailing whitespace at the end of files. this
-" is called on buffer write in the autogroup above.
-function! <SID>StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunc
-
-function! <SID>CleanFile()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %!git stripspace
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunc
-
-function! <SID>RunFile()
-    let ext = expand("%:e")
-    if(ext == "go") 
-        :GoRun
-    endif
-endfunc
-
-function! <SID>BuildFile()
-    let ext = expand("%:e")
-    if(ext == "go") 
-        :GoBuild
-    endif
-endfunc
-
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
     if exists('t:zoomed') && t:zoomed
