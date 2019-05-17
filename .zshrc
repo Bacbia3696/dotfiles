@@ -70,7 +70,6 @@ plugins=(
     zsh-completions
     vi-mode
     fzf
-    emoji
 )
 
 source $ZSH/oh-my-zsh.sh

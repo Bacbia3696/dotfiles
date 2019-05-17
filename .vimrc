@@ -114,18 +114,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sjl/badwolf'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'godlygeek/tabular'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
-" Plug 'lervag/vimtex'
 Plug 'tpope/vim-surround'
-Plug 'tkhren/vim-fake'
 Plug 'sjl/gundo.vim'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -137,8 +132,6 @@ endif
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'vim-scripts/dbext.vim'
 Plug '/usr/share/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
@@ -261,8 +254,6 @@ vnoremap <C-c> "+y
 set mouse=a
 " EMMET vim config
 let g:user_emmet_leader_key=','
-" auto format
-noremap <F3> :Autoformat<CR>
 " auto pair set up
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 au FileType html     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})

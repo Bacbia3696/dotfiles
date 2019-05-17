@@ -12,7 +12,7 @@ alias wd="vim ~/playGround/.diary/`date +%F`.tex"
 alias rd="r ~/playGround/.diary"
 alias act="source ~/.pyenv/lab/bin/activate"
 alias ipy="act && ipython --pylab"
-alias jl="bash -c \"source ~/.pyenv/lab/bin/activate && jupyter lab 2>>/dev/null 1>>/dev/null &\""
+alias jl="bash -c \"source ~/.pyenv/lab/bin/activate && jupyter lab 1>/dev/null 2>&1 &\"" 
 alias o="xdg-open"
 alias m="ncmpcpp --screen=visualizer"
 alias e=vim
