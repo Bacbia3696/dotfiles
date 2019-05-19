@@ -89,11 +89,11 @@ super + x
 super + shift + p
     $HOME/.config/dmenu/scripts/dmenu-power
 # Quit bspwm
-super + ctrl + q
-    bspc quit
+#super + ctrl + q
+#    bspc quit
 # Reload bspwm and sxhkd
 super + ctrl + r
-    pkill -USR1 -x sxhkd && bspc wm -r
+    pkill redshift && pkill -USR1 -x sxhkd && bspc wm -r
 
 ##############
 # Media keys #
@@ -111,8 +111,6 @@ super + ctrl + r
 {_,ctrl + ,alt + }Print
     maim {_,-s,-i $(xdotool getactivewindow)} --noopengl | \
     xclip -selection clipboard -t image/png -i
-shift + Print
-    maim -s --noopengl ~/Pictures/Screenshots/$(date +%s).png
 
 ################
 # Quick launch #
@@ -127,7 +125,7 @@ super + space
               -p  "Run"
 # Terminal
 super + Return
-	urxvt
+	gnome-terminal
 # Web browser
 super + {_,shift + }w
     google-chrome-stable {_,--app=https://youtube.com} --force-device-scale-factor=1.15
@@ -158,8 +156,7 @@ super + slash
 # Toggle mpd
 super + p
     ~/.config/scripts/mpd-toggle.sh
-super + period
-    mpc next
-super + comma
-    mpc prev
+# Change songs and ajust volume
+super {_, ctrl} + {period, comma}
+    mpc {next, volume +10, prev, volume -10}
 
