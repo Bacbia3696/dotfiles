@@ -25,4 +25,5 @@ fi
 setxkbmap -option ctrl:nocaps &
 sleep 1 && xcape -e 'Control_L=Escape' &
 mpd &
+sxhkd &
 exec bspwm
