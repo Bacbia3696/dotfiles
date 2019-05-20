@@ -68,10 +68,6 @@ augroup configgroup
     autocmd BufEnter *.avsc setlocal ft=json
 augroup END
 " }}}
-" Testing {{{
-let test#strategy = 'neovim'
-let test#python#runner = 'nose'
-" }}}
 " Backups and undo{{{
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -139,9 +135,9 @@ set updatetime=1000
 let g:livepreview_previewer = 'zathura'
 " For deoplete.vim
 let g:deoplete#enable_at_startup = 1
-"Tab to completion
-"" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+set completeopt-=preview " disable the preview window
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 " config for jedi
 let g:python_host_prog = '/home/dreamer/.pyenv/lab/bin/python'
 let g:python3_host_prog = '/home/dreamer/.pyenv/lab/bin/python3'
@@ -158,7 +154,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " disable Ex mode
 :map Q <Nop>
 " paste from system clipboard
-" noremap <C-v> "+]p:set nopaste<CR> 
 vnoremap <C-c> "+y
 " enable mouse support
 set mouse=a
@@ -168,4 +163,6 @@ let g:user_emmet_leader_key=','
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 au FileType html     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
 
+" FZF
+nmap <C-p> :Files<cr>
 " vim:foldmethod=marker:foldlevel=0
