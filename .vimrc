@@ -43,7 +43,6 @@ nnoremap <leader>m :set filetype?<CR>
 nnoremap <leader>w :w !sudo tee %<CR>
 nnoremap <leader>a :Ag 
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-nnoremap <leader>1 :set number!<CR>
 nnoremap <leader>d :GoDoc 
 " }}}
 " Syntastic {{{
@@ -98,6 +97,7 @@ Plug '/usr/share/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
+Plug 'Chiel92/vim-autoformat'
 call plug#end()
 " }}}
 " Colors {{{
@@ -144,11 +144,19 @@ let g:python3_host_prog = '/home/dreamer/.pyenv/lab/bin/python3'
 " Add hot key to move tab
 map <C-w><pageDown> :tabn<cr>
 map <C-w><pageUp> :tabp<cr>
+nnoremap <C-h>     :wincmd h<cr>|                            " window left
+nnoremap <C-j>     :wincmd j<cr>|                            " window below
+nnoremap <C-k>     :wincmd k<cr>|                            " window above
+nnoremap <C-l>     :wincmd l<cr>|                            " window right
 " Quit and save
 inoremap <C-q> <Esc>:q!<cr>
 nnoremap <C-q> :q!<cr>
 inoremap <C-s> <Esc>:w<cr>
 nnoremap <C-s> :w<cr>
+inoremap <M-q> <Esc>:qa!<cr>
+nnoremap <M-q> :qa!<cr>
+inoremap <M-s> <Esc>:wa<cr>
+nnoremap <M-s> :wa<cr>
 " disable auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " disable Ex mode
@@ -162,7 +170,8 @@ let g:user_emmet_leader_key=','
 " auto pair set up
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 au FileType html     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
-
+" Auto format
+noremap <F3> :Autoformat<CR>
 " FZF
 nmap <C-p> :Files<cr>
 " vim:foldmethod=marker:foldlevel=0
