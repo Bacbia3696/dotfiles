@@ -43,7 +43,6 @@ nnoremap <leader>m :set filetype?<CR>
 nnoremap <leader>w :w !sudo tee %<CR>
 nnoremap <leader>a :Ag 
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-nnoremap <leader>d :GoDoc 
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
@@ -65,6 +64,7 @@ augroup configgroup
     autocmd BufEnter *.md setlocal ft=markdown
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
+    autocmd TermOpen * setlocal statusline=%{b:term_title}
 augroup END
 " }}}
 " Backups and undo{{{
@@ -91,6 +91,7 @@ Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug '/usr/share/fzf'
@@ -121,6 +122,8 @@ command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-w>z :ZoomToggle<CR>
 " }}}
 " More config for plugin
+set splitbelow
+set splitright
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -142,12 +145,20 @@ inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 let g:python_host_prog = '/home/dreamer/.pyenv/lab/bin/python'
 let g:python3_host_prog = '/home/dreamer/.pyenv/lab/bin/python3'
 " Add hot key to move tab
-map <C-w><pageDown> :tabn<cr>
-map <C-w><pageUp> :tabp<cr>
-nnoremap <C-h>     :wincmd h<cr>|                            " window left
-nnoremap <C-j>     :wincmd j<cr>|                            " window below
-nnoremap <C-k>     :wincmd k<cr>|                            " window above
-nnoremap <C-l>     :wincmd l<cr>|                            " window right
+" map <C-pageDown> :tabn<cr>
+" map <C-pageUp> :tabp<cr>
+:tnoremap <A-h> <C-\><C-N><C-w>h
+:tnoremap <A-j> <C-\><C-N><C-w>j
+:tnoremap <A-k> <C-\><C-N><C-w>k
+:tnoremap <A-l> <C-\><C-N><C-w>l
+:inoremap <A-h> <C-\><C-N><C-w>h
+:inoremap <A-j> <C-\><C-N><C-w>j
+:inoremap <A-k> <C-\><C-N><C-w>k
+:inoremap <A-l> <C-\><C-N><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
 " Quit and save
 inoremap <C-q> <Esc>:q!<cr>
 nnoremap <C-q> :q!<cr>
@@ -169,9 +180,11 @@ set mouse=a
 let g:user_emmet_leader_key=','
 " auto pair set up
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
-au FileType html     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
+au FileType html*     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
 " Auto format
 noremap <F3> :Autoformat<CR>
 " FZF
 nmap <C-p> :Files<cr>
+" Remap terminal exit
+tnoremap <C-q> <C-\><C-n>
 " vim:foldmethod=marker:foldlevel=0
