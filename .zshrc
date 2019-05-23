@@ -123,3 +123,6 @@ function zle-keymap-select zle-line-init zle-line-finish
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
+
+clear
+cowthink $(fortune -s -n200)

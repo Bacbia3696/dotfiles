@@ -37,7 +37,8 @@ nnoremap gV `[v`]
 " }}}
 " Leader Shortcuts {{{
 let mapleader=","
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>t :TerminalToggle<CR>
 nnoremap <leader>l :LLPStartPreview<CR>
 nnoremap <leader>m :set filetype?<CR>
 nnoremap <leader>w :w !sudo tee %<CR>
@@ -119,11 +120,24 @@ function! s:ZoomToggle() abort
     endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <C-w>z :ZoomToggle<CR>
+nnoremap <silent> <A-f> :ZoomToggle<CR>
+
+function! s:TerminalToggle() abort
+    if 0
+        echom "Not implement yet"
+    else
+        setlocal splitbelow
+        10new
+        terminal
+        normal i
+        let t:terminal = 1
+    endif
+endfunction
+command! TerminalToggle call s:TerminalToggle()
 " }}}
 " More config for plugin
-set splitbelow
-set splitright
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
