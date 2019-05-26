@@ -2,6 +2,8 @@
 URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Semibold:size=14:minsize=False, xft:Dejavu Sans:style=Medium:size=12
 URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Black:size=14:minsize=False, xft:Dejavu Sans:style=Bold:size=12
 
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 
 URxvt.scrollBar: false
 URxvt.secondaryScreen: 1

@@ -1,3 +1,27 @@
+" Vim Plug {{{
+call plug#begin('~/.vim/plugged')
+Plug 'sjl/badwolf'
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
+Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
+Plug 'tpope/vim-surround'
+Plug 'sjl/gundo.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
+Plug 'yggdroot/indentline'
+Plug 'mattn/emmet-vim'
+Plug '/usr/share/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-airline/vim-airline'
+Plug 'Chiel92/vim-autoformat'
+call plug#end()
+" }}}
 " Spaces & Tabs {{{
 set tabstop=4           " 4 space tab
 set expandtab           " use spaces for tabs
@@ -35,16 +59,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
 " }}}
-" Leader Shortcuts {{{
-let mapleader=","
-nnoremap <leader>f :NERDTreeToggle<CR>
-nnoremap <leader>t :TerminalToggle<CR>
-nnoremap <leader>l :LLPStartPreview<CR>
-nnoremap <leader>m :set filetype?<CR>
-nnoremap <leader>w :w !sudo tee %<CR>
-nnoremap <leader>a :Ag 
-nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-" }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
@@ -58,6 +72,9 @@ augroup configgroup
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
     autocmd BufEnter *.sh setlocal tabstop=2
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
@@ -79,32 +96,19 @@ set undofile
 set history=100
 set undolevels=100
 " }}}
-" Vim Plug {{{
-call plug#begin('~/.vim/plugged')
-Plug 'sjl/badwolf'
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
-Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
-Plug 'tpope/vim-surround'
-Plug 'sjl/gundo.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'yggdroot/indentline'
-Plug 'mattn/emmet-vim'
-Plug '/usr/share/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'vim-airline/vim-airline'
-Plug 'Chiel92/vim-autoformat'
-call plug#end()
-" }}}
 " Colors {{{
 syntax enable           " enable syntax processing
 colorscheme badwolf
+" }}}
+" Leader Shortcuts {{{
+let mapleader=","
+nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>t :TerminalToggle<CR>
+nnoremap <leader>l :LLPStartPreview<CR>
+nnoremap <leader>a :Ag 
+nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
+nnoremap <leader>m A
+inoremap <leader>m <C-o>A
 " }}}
 " Custom Functions {{{
 " Zoom / Restore window.
@@ -120,7 +124,7 @@ function! s:ZoomToggle() abort
     endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <A-f> :ZoomToggle<CR>
+nnoremap <silent> <A-z> :ZoomToggle<CR>
 
 function! s:TerminalToggle() abort
     if 0
@@ -152,27 +156,34 @@ set updatetime=1000
 let g:livepreview_previewer = 'zathura'
 " For deoplete.vim
 let g:deoplete#enable_at_startup = 1
-set completeopt-=preview " disable the preview window
+" set completeopt-=preview " disable the preview window
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 " config for jedi
 let g:python_host_prog = '/home/dreamer/.pyenv/lab/bin/python'
 let g:python3_host_prog = '/home/dreamer/.pyenv/lab/bin/python3'
 " Add hot key to move tab
-" map <C-pageDown> :tabn<cr>
-" map <C-pageUp> :tabp<cr>
-:tnoremap <A-h> <C-\><C-N><C-w>h
-:tnoremap <A-j> <C-\><C-N><C-w>j
-:tnoremap <A-k> <C-\><C-N><C-w>k
-:tnoremap <A-l> <C-\><C-N><C-w>l
-:inoremap <A-h> <C-\><C-N><C-w>h
-:inoremap <A-j> <C-\><C-N><C-w>j
-:inoremap <A-k> <C-\><C-N><C-w>k
-:inoremap <A-l> <C-\><C-N><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+map <A-pageDown> :tabn<cr>
+map <A-pageUp> :tabp<cr>
+tnoremap <A-pageUp> <C-\><C-N><C-pageUp>
+tnoremap <A-pageDown> <C-\><C-N><C-pageDown>
+tnoremap <C-pageUp> <C-\><C-N><C-pageUp>
+tnoremap <C-pageDown> <C-\><C-N><C-pageDown>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+nnoremap <C-W><C-T> :tabnew<cr>
+nnoremap <C-W>T :tabnew<cr>
+
 " Quit and save
 inoremap <C-q> <Esc>:q!<cr>
 nnoremap <C-q> :q!<cr>

@@ -4,7 +4,7 @@
 feh --bg-fill --randomize ~/Pictures/Wallpapers/*.jpg &
 $HOME/.config/polybar/launch &
 xsetroot -cursor_name left_ptr &
-fcitx &
+ibus-daemon -drx &
 compton &
 xautolock -time 10 -locker i3lock-next &
 redshift -l 10.823099:106.629662 &
