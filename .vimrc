@@ -206,6 +206,7 @@ let g:user_emmet_leader_key=','
 " auto pair set up
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 au FileType html*     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
+au BufRead /tmp/psql.edit.* set syntax=sql
 " Auto format
 noremap <F3> :Autoformat<CR>
 " FZF

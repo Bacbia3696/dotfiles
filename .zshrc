@@ -8,13 +8,13 @@ export ZSH="/home/dreamer/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="emotty"
+ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "af-magic" "terminalparty" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -67,7 +67,6 @@ plugins=(
     zsh-autosuggestions
     zsh-completions
     colored-man-pages    
-    emotty
     vi-mode
     git
     fzf
@@ -126,7 +125,6 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 bindkey "^?" backward-delete-char
 bindkey '^[[3~' delete-char
-
 
 clear
 cowthink $(fortune -s -n200)
