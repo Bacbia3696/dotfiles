@@ -2,17 +2,16 @@
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
-Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug '/usr/share/fzf'
@@ -154,14 +153,16 @@ set relativenumber
 " Config for latex preview
 set updatetime=1000
 let g:livepreview_previewer = 'zathura'
-" For deoplete.vim
-let g:deoplete#enable_at_startup = 1
-" set completeopt-=preview " disable the preview window
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+" For deoplete.vim
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#show_docstring = 1
+set completeopt-=preview " disable the preview window
 " config for jedi
 let g:python_host_prog = '/home/dreamer/.pyenv/lab/bin/python'
 let g:python3_host_prog = '/home/dreamer/.pyenv/lab/bin/python3'
+let g:jedi#completions_enabled = 0
 " Add hot key to move tab
 map <A-pageDown> :tabn<cr>
 map <A-pageUp> :tabp<cr>
@@ -183,7 +184,6 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 nnoremap <C-W><C-T> :tabnew<cr>
 nnoremap <C-W>T :tabnew<cr>
-
 " Quit and save
 inoremap <C-q> <Esc>:q!<cr>
 nnoremap <C-q> :q!<cr>
