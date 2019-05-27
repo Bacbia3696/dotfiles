@@ -63,12 +63,13 @@ ZSH_THEME="emotty"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    colored-man-pages    
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-completions
+    colored-man-pages    
+    emotty
     vi-mode
+    git
     fzf
 )
 
