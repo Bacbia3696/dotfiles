@@ -21,6 +21,8 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 export server="13.76.83.15"
 
+PATH=$PATH:$HOME/.local/bin
+
 # Shortcut
 # Function
 function backup() {
