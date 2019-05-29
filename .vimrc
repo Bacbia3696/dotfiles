@@ -103,11 +103,12 @@ colorscheme badwolf
 let mapleader=","
 nnoremap <leader>f :NERDTreeToggle<CR>
 nnoremap <leader>t :TerminalToggle<CR>
-nnoremap <leader>l :LLPStartPreview<CR>
+" nnoremap <leader>l :LLPStartPreview<CR>
 nnoremap <leader>a :Ag 
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 nnoremap <leader>m A
 inoremap <leader>m <C-o>A
+nmap <Leader>l <C-w>w
 " }}}
 " Custom Functions {{{
 " Zoom / Restore window.
@@ -138,6 +139,54 @@ function! s:TerminalToggle() abort
 endfunction
 command! TerminalToggle call s:TerminalToggle()
 " }}}
+" Switching between tabs quit & save{{{
+	tnoremap <A-1> <C-\><C-N>1gt
+	tnoremap <A-2> <C-\><C-N>2gt
+	tnoremap <A-3> <C-\><C-N>3gt
+	tnoremap <A-4> <C-\><C-N>4gt
+	tnoremap <A-5> <C-\><C-N>5gt
+	tnoremap <A-6> <C-\><C-N>6gt
+	tnoremap <A-7> <C-\><C-N>7gt
+	tnoremap <A-8> <C-\><C-N>8gt
+	tnoremap <A-9> <C-\><C-N>9gt
+	nnoremap <A-1> 1gt
+	nnoremap <A-2> 2gt
+	nnoremap <A-3> 3gt
+	nnoremap <A-4> 4gt
+	nnoremap <A-5> 5gt
+	nnoremap <A-6> 6gt
+	nnoremap <A-7> 7gt
+	nnoremap <A-8> 8gt
+	nnoremap <A-9> 9gt
+    nnoremap <A-pageDown> :tabn<cr>
+    nnoremap <A-pageUp> :tabp<cr>
+    tnoremap <A-pageUp> <C-\><C-N><C-pageUp>
+    tnoremap <A-pageDown> <C-\><C-N><C-pageDown>
+    tnoremap <C-pageUp> <C-\><C-N><C-pageUp>
+    tnoremap <C-pageDown> <C-\><C-N><C-pageDown>
+    tnoremap <A-h> <C-\><C-N><C-w>h
+    tnoremap <A-j> <C-\><C-N><C-w>j
+    tnoremap <A-k> <C-\><C-N><C-w>k
+    tnoremap <A-l> <C-\><C-N><C-w>l
+    inoremap <A-h> <C-\><C-N><C-w>h
+    inoremap <A-j> <C-\><C-N><C-w>j
+    inoremap <A-k> <C-\><C-N><C-w>k
+    inoremap <A-l> <C-\><C-N><C-w>l
+    nnoremap <A-h> <C-w>h
+    nnoremap <A-j> <C-w>j
+    nnoremap <A-k> <C-w>k
+    nnoremap <A-l> <C-w>l
+    nnoremap <C-W><C-T> :tabnew<cr>
+    nnoremap <C-W>T :tabnew<cr>
+    inoremap <C-q> <Esc>:q!<cr>
+    nnoremap <C-q> :q!<cr>
+    inoremap <C-s> <Esc>:w<cr>
+    nnoremap <C-s> :w<cr>
+    inoremap <M-q> <Esc>:qa!<cr>
+    nnoremap <M-q> :qa!<cr>
+    inoremap <M-s> <Esc>:wa<cr>
+    nnoremap <M-s> :wa<cr>
+"}}}
 " More config for plugin
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -163,36 +212,6 @@ set completeopt-=preview " disable the preview window
 let g:python_host_prog = '/home/dreamer/.pyenv/lab/bin/python'
 let g:python3_host_prog = '/home/dreamer/.pyenv/lab/bin/python3'
 let g:jedi#completions_enabled = 0
-" Add hot key to move tab
-map <A-pageDown> :tabn<cr>
-map <A-pageUp> :tabp<cr>
-tnoremap <A-pageUp> <C-\><C-N><C-pageUp>
-tnoremap <A-pageDown> <C-\><C-N><C-pageDown>
-tnoremap <C-pageUp> <C-\><C-N><C-pageUp>
-tnoremap <C-pageDown> <C-\><C-N><C-pageDown>
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-nnoremap <C-W><C-T> :tabnew<cr>
-nnoremap <C-W>T :tabnew<cr>
-" Quit and save
-inoremap <C-q> <Esc>:q!<cr>
-nnoremap <C-q> :q!<cr>
-inoremap <C-s> <Esc>:w<cr>
-nnoremap <C-s> :w<cr>
-inoremap <M-q> <Esc>:qa!<cr>
-nnoremap <M-q> :qa!<cr>
-inoremap <M-s> <Esc>:wa<cr>
-nnoremap <M-s> :wa<cr>
 " disable auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " disable Ex mode
@@ -213,4 +232,6 @@ noremap <F3> :Autoformat<CR>
 nmap <C-p> :Files<cr>
 " Remap terminal exit
 tnoremap <C-q> <C-\><C-n>
+" Go to new line
+inoremap <M-CR> <ESC>o
 " vim:foldmethod=marker:foldlevel=0

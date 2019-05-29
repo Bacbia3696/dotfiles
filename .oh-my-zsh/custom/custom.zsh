@@ -1,9 +1,11 @@
 # Enviroment varible
 export kvm="192.168.122"
+export lxcvm="10.108.10"
 export MYPYTHON="~/.pyenv/lab/bin/python"
 
 # Aliash
 alias q=exit
+alias a="pipenv shell"
 alias vim=nvim
 alias o=xdg-open
 alias r=ranger
