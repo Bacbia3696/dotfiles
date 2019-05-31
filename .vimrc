@@ -12,13 +12,13 @@ Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug '/usr/share/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'Chiel92/vim-autoformat'
+Plug 'suan/vim-instant-markdown'
 call plug#end()
 " }}}
 " Spaces & Tabs {{{
@@ -82,6 +82,7 @@ augroup configgroup
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
     autocmd TermOpen * setlocal statusline=%{b:term_title}
+    autocmd SwapExists * let v:swapchoice = "o"
 augroup END
 " }}}
 " Backups and undo{{{
@@ -124,7 +125,7 @@ function! s:ZoomToggle() abort
     endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <A-z> :ZoomToggle<CR>
+nnoremap <silent> <A-f> :ZoomToggle<CR>
 
 function! s:TerminalToggle() abort
     if 0

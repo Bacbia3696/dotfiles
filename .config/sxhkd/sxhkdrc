@@ -24,7 +24,7 @@ super + {Next,Prior}
     bspc desktop -f {next,prev}
 # Circulate focused locally
 alt + {_,shift} + Tab
-    bspc node -f {next.local,prev.local}
+    bspc node -f last.local
 # Select all windows
 super + a
     bspc node -f @/
@@ -86,6 +86,8 @@ super + g
 super + x
     i3lock-next
 # Power menu
+super + shift + x
+    $HOME/.config/dmenu/scripts/dmenu-power
 super + shift + p
     $HOME/.config/dmenu/scripts/dmenu-power
 # Quit bspwm
