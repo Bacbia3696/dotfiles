@@ -7,7 +7,6 @@ xsetroot -cursor_name left_ptr &
 ibus-daemon -drx &
 compton &
 xautolock -time 10 -locker i3lock-next &
-redshift -l 10.823099:106.629662 &
 
 
 # Workspace

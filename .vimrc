@@ -12,6 +12,7 @@ Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'deoplete-plugins/deoplete-clang'
 Plug 'mattn/emmet-vim'
 Plug '/usr/share/fzf'
 Plug 'junegunn/fzf.vim'
