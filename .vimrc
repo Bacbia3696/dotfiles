@@ -20,6 +20,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'Chiel92/vim-autoformat'
 Plug 'suan/vim-instant-markdown'
+Plug 'ap/vim-css-color'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 " }}}
 " Spaces & Tabs {{{
@@ -75,15 +77,15 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal tabstop=2
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
     autocmd BufEnter *.py setlocal tabstop=4
     autocmd BufEnter *.md setlocal ft=markdown
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
+    autocmd BufEnter *.js* setlocal tabstop=2
+    autocmd BufEnter *.js* setlocal shiftwidth=2
     autocmd TermOpen * setlocal statusline=%{b:term_title}
     autocmd SwapExists * let v:swapchoice = "o"
+    au filetype markdown set conceallevel=0
 augroup END
 " }}}
 " Backups and undo{{{
@@ -227,6 +229,7 @@ let g:user_emmet_leader_key=','
 " auto pair set up
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 au FileType html*     let b:AutoPairs = AutoPairsDefine({'{%' : '%}', '<!--' : '-->'})
+au FileType *js*     let b:AutoPairs = AutoPairsDefine({'{/*' : '*/}', '<' : ' />'})
 au BufRead /tmp/psql.edit.* set syntax=sql
 " Auto format
 noremap <F3> :Autoformat<CR>
@@ -236,4 +239,9 @@ nmap <C-p> :Files<cr>
 tnoremap <C-q> <C-\><C-n>
 " Go to new line
 inoremap <M-CR> <ESC>o
+" Config for vim-commentary
+autocmd FileType javascript.jsx setlocal commentstring=\{/\*\ %s\ \*/\}
+" for vim indent
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 " vim:foldmethod=marker:foldlevel=0
