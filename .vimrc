@@ -248,4 +248,12 @@ autocmd FileType javascript.jsx setlocal commentstring=\{/\*\ %s\ \*/\}
 " for vim indent
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " vim:foldmethod=marker:foldlevel=0
