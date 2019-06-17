@@ -1,5 +1,7 @@
 " Vim Plug {{{
 call plug#begin('~/.vim/plugged')
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'sjl/badwolf'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -83,6 +85,8 @@ augroup configgroup
     autocmd BufEnter *.avsc setlocal ft=json
     autocmd BufEnter *.js* setlocal tabstop=2
     autocmd BufEnter *.js* setlocal shiftwidth=2
+    autocmd BufEnter *.html* setlocal tabstop=2
+    autocmd BufEnter *.html* setlocal shiftwidth=2
     autocmd TermOpen * setlocal statusline=%{b:term_title}
     autocmd SwapExists * let v:swapchoice = "o"
     au filetype markdown set conceallevel=0

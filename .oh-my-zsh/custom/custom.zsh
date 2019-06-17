@@ -10,7 +10,7 @@ alias vim=nvim
 alias o=xdg-open
 alias r=ranger
 alias t=tmux
-alias wd="vim ~/playGround/.diary/`date +%F`.tex"
+alias wd="writediary"
 alias rd="r ~/playGround/.diary"
 alias act="source ~/.pyenv/lab/bin/activate"
 alias ipy="act && ipython --pylab"
@@ -45,6 +45,18 @@ function cpImages() {
     do
         scp $server:~/darknet/$1.jpg ~/Pictures 
     done
+}
+
+function writediary() {
+    cd $HOME/playGround/.diary
+    filename=`date +%F`.tex
+    if [ ! -f $filename ]; then
+        echo "New file created"
+        cp template.tex $filename
+    fi
+    echo $filename
+    vim $filename
+    cd -
 }
 
 export NVM_DIR="$HOME/.nvm"
