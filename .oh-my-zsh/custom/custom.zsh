@@ -12,14 +12,15 @@ alias r=ranger
 alias t=tmux
 alias wd="writediary"
 alias rd="r ~/playGround/.diary"
-alias act="source ~/.pyenv/lab/bin/activate"
-alias ipy="act && ipython --pylab"
+alias rdd="vim $HOME/playGround/.diary/`date -d yesterday +%F`.tex"
+alias ipy="chenv lab && ipython --profile=lab --matplotlib"
 alias jl="bash -c \"source ~/.pyenv/lab/bin/activate && jupyter lab 1>/dev/null 2>&1 &\"" 
 alias o="xdg-open"
 alias m="ncmpcpp --screen=visualizer"
 alias e=vim
 alias se=sudoedit
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias image='xclip -sel clip -t image/png -o > '
 
 export server="13.76.83.15"
 
@@ -38,13 +39,6 @@ function chenv() {
     else
         source ~/.pyenv/$1/bin/activate
     fi
-}
-
-function cpImages() {
-    for i in $#
-    do
-        scp $server:~/darknet/$1.jpg ~/Pictures 
-    done
 }
 
 function writediary() {
