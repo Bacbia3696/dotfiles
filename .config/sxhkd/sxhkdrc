@@ -125,6 +125,10 @@ super + space
               -sf "#282A36" \
               -fn "Mono-12.5" \
               -p  "Run"
+
+# Emacs
+super + e
+    emacs
 # Terminal
 super + Return
 	gnome-terminal

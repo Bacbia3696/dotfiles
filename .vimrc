@@ -24,6 +24,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'suan/vim-instant-markdown'
 Plug 'ap/vim-css-color'
 Plug 'Yggdroot/indentLine'
+Plug 'chaoren/vim-wordmotion'
 call plug#end()
 " }}}
 " Spaces & Tabs {{{

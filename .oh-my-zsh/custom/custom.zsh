@@ -22,7 +22,6 @@ alias se=sudoedit
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias image='xclip -sel clip -t image/png -o > '
 
-export server="13.76.83.15"
 
 PATH=$PATH:$HOME/.local/bin
 
