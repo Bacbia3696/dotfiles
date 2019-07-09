@@ -213,11 +213,11 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '(("Fira Code"
-                               :size 18
+                               :size 17
                                :weight normal
                                :width normal),
                                ("Noto Color Emoji"
-                                :size 18
+                                :size 17
                                 :weight normal
                                 :width normal)
                                )
