@@ -63,14 +63,14 @@ ZSH_THEME="af-magic"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    zsh-syntax-highlighting
     zsh-autosuggestions
-    zsh-completions
-    colored-man-pages    
     vi-mode
-    git
     fzf
 )
+    # git
+    # zsh-completions
+    # zsh-syntax-highlighting
+    # colored-man-pages    
 
 source $ZSH/oh-my-zsh.sh
 
