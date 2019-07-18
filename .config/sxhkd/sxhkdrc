@@ -129,6 +129,9 @@ super + space
 # Emacs
 super + e
     emacs
+# Vim
+super + v
+    gnome-terminal -e nvim
 # Terminal
 super + Return
 	gnome-terminal

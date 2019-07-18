@@ -66,11 +66,11 @@ plugins=(
     zsh-autosuggestions
     vi-mode
     fzf
+    colored-man-pages    
 )
     # git
     # zsh-completions
     # zsh-syntax-highlighting
-    # colored-man-pages    
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,7 +88,7 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR=nvim
+export EDITOR=vim
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -127,4 +127,7 @@ bindkey "^?" backward-delete-char
 bindkey '^[[3~' delete-char
 
 clear
-cowthink $(fortune -s -n200)
+if [ -v $TMUX ]
+then
+    cowthink $(fortune -s -n200)
+fi

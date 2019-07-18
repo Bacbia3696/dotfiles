@@ -6,10 +6,10 @@ export MYPYTHON="~/.pyenv/lab/bin/python"
 # Aliash
 alias q=exit
 alias a="pipenv shell"
-alias vim=nvim
 alias o=xdg-open
 alias r=ranger
 alias t=tmux
+alias vim=nvim
 alias wd="writediary"
 alias rd="r ~/playGround/.diary"
 alias rdd="vim $HOME/playGround/.diary/`date -d yesterday +%F`.tex"
@@ -21,6 +21,8 @@ alias e=vim
 alias se=sudoedit
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias image='xclip -sel clip -t image/png -o > '
+alias et='emacs --terminal /dev/tty1'
+alias exat='exa -I="__*" -T --classify'
 
 
 PATH=$PATH:$HOME/.local/bin
@@ -50,6 +52,26 @@ function writediary() {
     echo $filename
     vim $filename
     cd -
+}
+
+function runJava() {
+    (cd src && javac `echo $1 | sed 's/\./\//g'`.java -d out)
+    (cd out && java $1)
+}
+
+
+function code() {
+    if [ $# -eq 0 ]
+    then
+        DIR="."
+    else
+        DIR=$1
+        if [ ! -d $DIR ]
+        then
+            mkdir -p $DIR
+        fi
+    fi
+    tmux new -s "BACBIA" -n "ide" -c $DIR \; split-window -h -p 20 -d \; attach
 }
 
 export NVM_DIR="$HOME/.nvm"
