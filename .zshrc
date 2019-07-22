@@ -111,18 +111,29 @@ export KEYTIMEOUT=1
 # Start tmux by default
 #[[ $TERM != "screen" ]] && exec tmux
 
-# Make vim mode visual
+# Make vim mode visual, go black to block if execute other program
+# https://archive.emily.st/2013/05/03/zsh-vi-cursor/
 function zle-keymap-select zle-line-init zle-line-finish
 {
   case $KEYMAP in
       vicmd)      print -n '\033[1 q';; # block cursor
       viins|main) print -n '\033[5 q';; # line cursor
   esac
+
+    zle reset-prompt
+    zle -R
+}
+
+function zle-line-finish
+{
+    print -n '\033[1 q' # block cursor
 }
 
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
+
+# Make delete key work
 bindkey "^?" backward-delete-char
 bindkey '^[[3~' delete-char
 

@@ -302,5 +302,8 @@ bind j select-pane -D  # move down
 bind k select-pane -U  # move up
 bind l select-pane -R  # move right
 
+# Make time display panel longer
+set -g display-panes-time 3000
+
 # move status line to top
 #set -g status-position top
