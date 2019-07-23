@@ -22,7 +22,8 @@ alias se=sudoedit
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias image='xclip -sel clip -t image/png -o > '
 alias et='emacs --terminal /dev/tty1'
-alias exat='exa -I="__*" -T --classify'
+alias exat='exa -I="*.pyc" -T --classify'
+alias tree='exa -I="*.pyc" -T --classify'
 
 
 PATH=$PATH:$HOME/.local/bin
@@ -33,12 +34,20 @@ function backup() {
     cp $1 $1.`date +%F`
 }
 
-function chenv() {
+function pyenv() {
     if [ "$#" -eq 0 ]
     then
         deactivate
     else
-        source ~/.pyenv/$1/bin/activate
+        if [ -d "/home/dreamer/.pyenv/$1" ]
+        then
+            echo "Already exists env"
+            source ~/.pyenv/$1/bin/activate
+        else
+            echo "Create new env $1"
+            (cd ~/.pyenv && python -m venv $1)
+            source ~/.pyenv/$1/bin/activate
+        fi
     fi
 }
 

@@ -307,3 +307,5 @@ set -g display-panes-time 3000
 
 # move status line to top
 #set -g status-position top
+
+bind-key -n M-Enter if-shell '[ "$(expr 25 \* #{pane_height} / 10 )" -lt "#{pane_width}" ]' 'split-pane -h' 'split-pane -v'
