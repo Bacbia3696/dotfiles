@@ -109,3 +109,6 @@ set splitbelow
 
 " change emmet leader key
 let g:user_emmet_leader_key=','
+
+" F5 to formatcode
+noremap <F5> :Autoformat<CR>

@@ -41,7 +41,6 @@ function pyenv() {
     else
         if [ -d "/home/dreamer/.pyenv/$1" ]
         then
-            echo "Already exists env"
             source ~/.pyenv/$1/bin/activate
         else
             echo "Create new env $1"
