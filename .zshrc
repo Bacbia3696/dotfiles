@@ -106,7 +106,7 @@ export ARCHFLAGS="-arch x86_64"
 setopt no_hist_verify
 
 # Config vi mode
-export KEYTIMEOUT=0.1
+export KEYTIMEOUT=1
 
 # Start tmux by default
 #[[ $TERM != "screen" ]] && exec tmux
