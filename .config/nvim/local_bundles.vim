@@ -1,8 +1,0 @@
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'ervandew/supertab'
-Plug 'easymotion/vim-easymotion'
-Plug 'chaoren/vim-wordmotion'
-Plug 'jiangmiao/auto-pairs'
-Plug 'sjl/badwolf'
-Plug 'Chiel92/vim-autoformat'

@@ -88,7 +88,7 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR=vim
+export EDITOR=nvim
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -137,8 +137,20 @@ zle -N zle-keymap-select
 bindkey "^?" backward-delete-char
 bindkey '^[[3~' delete-char
 
+# Make tmux keep current virtual env
+if [[ -n "$TMUX" ]]; then
+    tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
+fi
+if [ -n "$VIRTUAL_ENV" ]; then
+    source $VIRTUAL_ENV/bin/activate;
+fi
+
+# Config for fzf
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_CTRL_T_COMMAND="rg --files --hidden"
+
 clear
 if [ -v $TMUX ]
 then
-    cowthink $(fortune -s -n200)
+   cowthink $(fortune -s -n200)
 fi

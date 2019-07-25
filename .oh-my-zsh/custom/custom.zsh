@@ -24,6 +24,7 @@ alias image='xclip -sel clip -t image/png -o > '
 alias et='emacs --terminal /dev/tty1'
 alias exat='exa -I="*.pyc" -T --classify'
 alias tree='exa -I="*.pyc" -T --classify'
+alias gd='dotfiles'
 
 
 PATH=$PATH:$HOME/.local/bin
