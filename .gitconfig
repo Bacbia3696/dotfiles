@@ -1,0 +1,23 @@
+[user]
+	email = bacbia3696@gmail.com
+	name = DatNguyen
+[core]
+	editor = nvim
+[alias]
+	a    = add
+  au   = add -u
+  aa   = add -a
+	c    = commit
+  cam  = commit -am
+  cm   = commit -m
+  cl   = config
+  cg   = config --global
+  cfix = commit --amend
+  d    = diff
+	p    = push
+  pf   = push -f
+  s    = status
+  f    = fetch
+  r    = remote
+  rv   = remote -vv
+  tree = log --oneline --decorate --all --graph
