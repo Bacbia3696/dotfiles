@@ -149,6 +149,9 @@ fi
 export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_CTRL_T_COMMAND="rg --files --hidden"
 
+# Fix control S pause in vim
+stty -ixon
+
 clear
 if [ -v $TMUX ]
 then

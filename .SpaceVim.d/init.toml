@@ -11,20 +11,35 @@
 # set spacevim theme. by default colorscheme layer is not loaded,
 # if you want to use more colorscheme, please load the colorscheme
 # layer
-colorscheme                   = "material"
-colorscheme_bg                = "dark"
+colorscheme                     = "molokai"
+# colorscheme_bg                  = "dark"
+# Enable vim compatible
+vimcompatible                   = true
 # Disable guicolors in basic mode, many terminal do not support 24bit
 # true colors
-enable_guicolors              = true
+enable_guicolors                = true
 # Disable statusline separator, if you want to use other value, please
 # install nerd fonts
 statusline_separator          = "arrow"
-statusline_inactive_separator = "arrow"
+statusline_inactive_separator = "nil"
 buffer_index_type             = 4
-enable_tabline_filetype_icon  = true
-enable_statusline_mode        = false
+enable_key_frequency          = true
+enable_statusline_bfpath      = true
+statusline_left_sections      = ['winnr', 'major mode', 'syntax checking', 'version control info']
+enable_tabline_ft_icon        = true
+enable_os_fileformat_icon     = true
+enable_statusline_mode        = true
+
+enable_vimfiler_filetypeicon  = true
+enable_vimfiler_gitstatus     = true
+enable_vimfiler_welcome       = false
+
 bootstrap_before              = "myspacevim#before"
 bootstrap_after               = "myspacevim#after"
+
+
+[[custom_plugins]]
+name = "takac/vim-hardtime"
 
 # Move word to word with easy
 [[custom_plugins]]
@@ -46,6 +61,15 @@ merge = false
 name  = 'sjl/badwolf'
 marge = false
 
+# Add auto format
+[[custom_plugins]]
+name  = 'Chiel92/vim-autoformat'
+marge = false
+
+[[custom_plugins]]
+name  = 'mbbill/undotree'
+marge = false
+
 # Enable autocomplete layer
 [[layers]]
 name                                = 'autocomplete'
@@ -61,13 +85,16 @@ default_height   = 30
 name = "colorscheme"
 
 [[layers]]
-name = "unite"
+name = "fzf"
 
 [[layers]]
 name = 'tools'
 
 [[layers]]
 name = "git"
+
+[[layers]]
+name = 'VersionControl'
 
 [[layers]]
 name = "lang#javascript"
@@ -77,3 +104,6 @@ name = "lang#html"
 
 [[layers]]
 name = "lang#python"
+
+[[layers]]
+name = "lang#vim"

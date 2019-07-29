@@ -5,11 +5,12 @@ export MYPYTHON="~/.pyenv/lab/bin/python"
 
 # Aliash
 alias q=exit
+alias :q=exit
 alias a="pipenv shell"
 alias o=xdg-open
 alias r=ranger
 alias t=tmux
-alias vim=nvim
+# alias vim=nvim
 alias wd="writediary"
 alias rd="r ~/playGround/.diary"
 alias rdd="vim $HOME/playGround/.diary/`date -d yesterday +%F`.tex"
@@ -17,7 +18,7 @@ alias ipy="chenv lab && ipython --profile=lab --matplotlib"
 alias jl="bash -c \"source ~/.pyenv/lab/bin/activate && jupyter lab 1>/dev/null 2>&1 &\"" 
 alias o="xdg-open"
 alias m="ncmpcpp --screen=visualizer"
-alias e=vim
+alias e=nvim
 alias se=sudoedit
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias image='xclip -sel clip -t image/png -o > '
@@ -25,6 +26,7 @@ alias et='emacs --terminal /dev/tty1'
 alias exat='exa -I="*.pyc" -T --classify'
 alias tree='exa -I="*.pyc" -T --classify'
 alias gd='dotfiles'
+alias g='git'
 
 
 PATH=$PATH:$HOME/.local/bin
