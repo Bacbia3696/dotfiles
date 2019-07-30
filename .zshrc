@@ -157,3 +157,5 @@ if [ -v $TMUX ]
 then
    cowthink $(fortune -s -n200)
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
