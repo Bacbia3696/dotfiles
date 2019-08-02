@@ -8,7 +8,8 @@ export ZSH="/home/dreamer/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="af-magic"
+# ZSH_THEME="af-magic"
+ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,7 +67,10 @@ plugins=(
     zsh-autosuggestions
     vi-mode
     fzf
-    colored-man-pages    
+    colored-man-pages
+    tmux
+    git
+    z
 )
     # git
     # zsh-completions
@@ -157,5 +161,3 @@ if [ -v $TMUX ]
 then
    cowthink $(fortune -s -n200)
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
