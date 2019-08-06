@@ -1,0 +1,17 @@
+{
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "smartf.timeout": 5000,
+  "smartf.jumpOnTrigger": false,
+  "suggest.noselect": false,
+  "suggest.snippetIndicator": "📜",
+  "todolist.enable": true,
+  "todolist.monitor": true,
+  "yank.enableCompletion": false
+}
