@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 " General
 
 " Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair
-" Plug 'liuchengxu/vim-which-key' " Displays available keybindings in popup.
+Plug 'liuchengxu/vim-which-key' " Displays available keybindings in popup.
 " Plug 'mattn/emmet-vim' " Provides support for expanding abbreviations
 Plug 'Shougo/echodoc.vim' " Print documents in echo area.
 Plug 'SirVer/ultisnips' " Ultimate solution for snippets
@@ -44,9 +44,10 @@ Plug 'Yggdroot/indentLine' " Display the indention levels with thin vertical lin
 Plug 'Chiel92/vim-autoformat' " Format code with one button press
 Plug 'Valloric/MatchTagAlways' " Always highlights the XML/HTML tags that enclose your cursor location
 Plug 'KabbAmine/vCoolor.vim' " Simple color selector/picker
+Plug 'fatih/vim-go' " Adds Go language support
 
 " CSS
-Plug 'hail2u/vim-css3-syntax' " CSS3 syntax 
+" Plug 'hail2u/vim-css3-syntax' " CSS3 syntax 
 
 call plug#end()
 " }}}
@@ -177,10 +178,10 @@ nnoremap <leader>fh :History<CR>
 nnoremap <leader>fS :Snippets<CR>
 nnoremap <leader>fm :Maps<CR>
 nnoremap <leader>fH :Helptags<CR>
-nnoremap <leader>fgs GFiles?<CR>
-nnoremap <leader>fgf GFiles<CR>
-nnoremap <leader>fgc GCommits<CR>
-nnoremap <leader>fgb BGCommits<CR>
+nnoremap <leader>fgs :GFiles?<CR>
+nnoremap <leader>fgf :GFiles<CR>
+nnoremap <leader>fgc :GCommits<CR>
+nnoremap <leader>fgb :BGCommits<CR>
 
 " Toggle goyo
 nnoremap <leader>g :Goyo<CR>
@@ -351,8 +352,9 @@ let g:ale_lint_on_enter = 0
 let g:airline#extensions#ale#enabled = 1
 " set linter for js
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
+    \ 'javascript': ['eslint'],
+    \ 'go': ['gopls'],
+    \}
 " }}}
 " echodoc {{{
 let g:echodoc#enable_at_startup = 1
@@ -424,6 +426,8 @@ endfunction
 " word_motion {{{
 nmap dw de
 nmap cw ce
+xmap dw de
+xmap cw ce
 " }}}"
 " coc.nvim {{{
 " Default is 4000
@@ -481,6 +485,31 @@ nmap <leader>rn <Plug>(coc-rename)
 command! -nargs=0 Format :call CocAction('format')
 
 " }}}
+" which_key {{{
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+
+let g:which_key_map.v = { 'name' : '+vim' }
+let g:which_key_map.c = { 'name' : '+coc_config' }
+let g:which_key_map.l = { 'name' : '+coc_list' }
+let g:which_key_map.f = { 'name' : '+fzf' }
+let g:which_key_map.e = { 'name' : '+ale' }
+let g:which_key_map.a = { 'name' : 'select_all' }
+let g:which_key_map.p = { 'name' : 'select_last_paste' }
+let g:which_key_map.q = { 'name' : 'force_quit_all' }
+let g:which_key_map.s = { 'name' : 'save_all_and_quit' }
+let g:which_key_map.w = { 'name' : 'write_all' }
+" }}}"
+" vim-go {{{
+" disable key binding
+let g:go_def_mapping_enabled = 0
+" }}}
 
 " }}}
 " =============================
@@ -507,6 +536,8 @@ augroup configgroup
     autocmd BufWritePre,BufRead Makefile setlocal noexpandtab
     autocmd BufWritePre,BufRead *.go setlocal noexpandtab
     autocmd TermOpen * setlocal statusline=%{b:term_title}
+    autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+    autocmd BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 augroup END
 " }}}
 " =============================
