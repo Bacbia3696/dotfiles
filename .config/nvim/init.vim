@@ -10,14 +10,13 @@ call plug#begin('~/.vim/plugged')
 " Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair
 Plug 'liuchengxu/vim-which-key' " Displays available keybindings in popup.
 " Plug 'mattn/emmet-vim' " Provides support for expanding abbreviations
-Plug 'Shougo/echodoc.vim' " Print documents in echo area.
-Plug 'SirVer/ultisnips' " Ultimate solution for snippets
+" Plug 'Shougo/echodoc.vim' " Print documents in echo area.
+" Plug 'SirVer/ultisnips' " Ultimate solution for snippets
 Plug 'Xuyuanp/nerdtree-git-plugin' " A plugin of NERDTree showing git status flags
 Plug 'chaoren/vim-wordmotion' " More useful word motions
 Plug 'chrisbra/NrrwRgn' " For focussing on a selected region
-Plug 'dense-analysis/ale' " Asynchronous Lint Engine
+" Plug 'dense-analysis/ale' " Asynchronous Lint Engine
 Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme
-Plug 'honza/vim-snippets' " Snippets files for various programming languages
 Plug 'junegunn/fzf.vim' " Things you can do with fzf and Vim
 Plug 'junegunn/goyo.vim' " Distraction-free writing
 Plug 'junegunn/limelight.vim' " Hyperfocus-writing
@@ -26,12 +25,10 @@ Plug 'mhartington/oceanic-next' " Neovim theme inspired by Oceanic Next for Subl
 Plug 'mhinz/vim-startify' " Provides a start screen
 Plug 'morhetz/gruvbox' " Gruvbox Theme
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Coc is an intellisense engine
-Plug 'ryanoasis/vim-devicons' " Adds file type glyphs/icons to popular Vim plugins
 Plug 'scrooloose/nerdtree' " File system explorer
 Plug 'simnalamburt/vim-mundo' " Visualize undo tree
 Plug 't9md/vim-choosewin' "Land on window you chose like tmux's 'display-pane
 Plug 'terryma/vim-multiple-cursors' " Multi cursors support
-Plug 'terryma/vim-smooth-scroll' " Makes scrolling in Vim nice and smooth
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Adds syntax for nerdtree on most common file extensions
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-fugitive' " A Git wrapper so awesome, it should be illegal
@@ -39,15 +36,19 @@ Plug 'tpope/vim-repeat' " Repeat unnative command
 Plug 'tpope/vim-surround' " Surround stuffs
 Plug 'tpope/vim-unimpaired' " Complementary pairs of mappings
 Plug 'vim-airline/vim-airline' " Draw a nice statusline
+" Plug 'vim-airline/vim-airline-themes' " A collection of themes for vim-airline
 Plug 'weilbith/nerdtree_choosewin-plugin' " Choosewin for NERDTree
 Plug 'Yggdroot/indentLine' " Display the indention levels with thin vertical lines
 Plug 'Chiel92/vim-autoformat' " Format code with one button press
 Plug 'Valloric/MatchTagAlways' " Always highlights the XML/HTML tags that enclose your cursor location
 Plug 'KabbAmine/vCoolor.vim' " Simple color selector/picker
 Plug 'fatih/vim-go' " Adds Go language support
-
-" CSS
-" Plug 'hail2u/vim-css3-syntax' " CSS3 syntax 
+Plug '/home/dreamer/.fzf' " Local dir for fzf
+" Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column) and stages/undoes hunks
+Plug 'liuchengxu/vista.vim' " Viewer & Finder for LSP symbols and tags
+Plug 'Bacbia3696/vim-snippets' " Contains snippets files for various programming languages
+" This plugin should load last in line
+Plug 'ryanoasis/vim-devicons' " Adds file type glyphs/icons to popular Vim plugins
 
 call plug#end()
 " }}}
@@ -57,15 +58,17 @@ call plug#end()
 " Save and quit
 nnoremap <C-q> :quit!<CR>
 nnoremap <C-s> :save %<CR>
+nnoremap <M-s> :wa<CR>
 inoremap <C-q> <ESC>:quit!<CR>
-inoremap <C-s> <ESC>:save %<CR>
+inoremap <C-s> <ESC>:save %<CR>a
+inoremap <M-s> <ESC>:wa<CR>a
 tnoremap <C-q> <C-\><C-n>
 
 " To simulate |i_CTRL-R| in terminal-mode:
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " Open new tab
-nnoremap <S-t> :tabnew<CR>
+nnoremap <S-t> :$tabnew<CR>
 
 " Navigate tab
 nnoremap <M-0> tablast<CR>
@@ -151,21 +154,19 @@ cnoremap <C-k> <C-p>
 " Pick leader key
 let mapleader="\<Space>"
 
+
+" open terminal
+nnoremap <leader>' :vsplit term://zsh<CR>
+
 " high light last past
 nnoremap <leader>p `[v`]
-" select all buffer
-nnoremap <leader>a ggVG
 " edit config file
-nnoremap <leader>vf :tabedit $MYVIMRC<CR>
+nnoremap <leader>vf :e $MYVIMRC<CR>
 nnoremap <leader>vs :source $MYVIMRC<CR>:PlugInstall<CR>
-" save buffer all
-nnoremap <leader>w :wa<CR>
-" close and quit all
-nnoremap <leader>q :qa!<CR>
-" save and quite all
-nnoremap <leader>s :wqa<CR>
 " clear search
 nnoremap <leader>sc :nohl<CR>
+" quit all
+nnoremap <leader>q :qa!<CR>
 
 " Leader keybind for fzf search
 nnoremap <leader>ff :call FZFWithDevIcons()<CR>
@@ -178,18 +179,19 @@ nnoremap <leader>fh :History<CR>
 nnoremap <leader>fS :Snippets<CR>
 nnoremap <leader>fm :Maps<CR>
 nnoremap <leader>fH :Helptags<CR>
+nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fgs :GFiles?<CR>
 nnoremap <leader>fgf :GFiles<CR>
 nnoremap <leader>fgc :GCommits<CR>
 nnoremap <leader>fgb :BGCommits<CR>
 
 " Toggle goyo
-nnoremap <leader>g :Goyo<CR>
+nnoremap <leader>G :Goyo<CR>
 
-" Ale 
-nmap <leader>ep <Plug>(ale_previous_wrap)
-nmap <leader>en <Plug>(ale_next_wrap)
-nmap <leader>ee :ALELint<CR>
+" Ale
+" nmap <leader>ep <Plug>(ale_previous_wrap)
+" nmap <leader>en <Plug>(ale_next_wrap)
+" nmap <leader>ee :ALELint<CR>
 
 " Coc list
 nnoremap <leader>ll :CocList<CR>
@@ -201,19 +203,41 @@ nnoremap <leader>lc :CocList commands<CR>
 nnoremap <leader>lC :CocList colors<CR>
 nnoremap <leader>lh :CocList cmdhistory<CR>
 nnoremap <leader>ly :CocList yank<CR>
-nnoremap <leader>lr :CocList mru<CR>
 nnoremap <leader>lf :CocList files<CR>
 nnoremap <leader>lM :CocList maps<CR>
 nnoremap <leader>lm :CocList marketplace<CR>
-nnoremap <leader>lw :CocList windows<CR>
-nnoremap <leader>lb :CocList buffers<CR>
-nnoremap <leader>ls :CocList grep<CR>
-nnoremap <leader>lgf :CocList gfiles<CR>
 
+" Buffer hotkey
+nnoremap <leader>bd :bd!<CR>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bs :w<CR>
+nnoremap <leader>bS :wa<CR>
+nnoremap <leader>bl :ls<CR>
+nnoremap <leader>bh :Startify<CR>
+nnoremap <leader>ba ggVG<CR>
+
+" Window hotkey
+nnoremap <leader>wq :q!<CR>
+nnoremap <leader>wQ :qa!<CR>
+nnoremap <leader>ww :wq<CR>
+nnoremap <leader>wW :wqa<CR>
+nnoremap <leader>wo :on<CR>
 
 " Coc
 nnoremap <leader>cc :CocCommand<CR>
 nnoremap <leader>cf :CocConfig<CR>
+
+"" Git
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gl :Gpull<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gr :Gremove<CR>
+nnoremap <Leader>go :.Gbrowse<CR>
 
 " }}}
 " =============================
@@ -221,16 +245,16 @@ nnoremap <leader>cf :CocConfig<CR>
 
 " Display all white space character
 " https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character/1675698
-" ↵,→,~,↷,↶,·,¬,⇨,⋄,‸
+"↵,→,~,↷,↶,·,¬,⇨,⋄,‸
 set listchars=eol:↵,tab:⇨\ ,trail:⋄,space:·
 set list
+syntax on
 set termguicolors " use terminal gui color as background
 " let g:oceanic_next_terminal_bold = 1
 " let g:oceanic_next_terminal_italic = 1
 " colorscheme OceanicNext
 " colorscheme gruvbox
 " let g:gruvbox_contrast_dark = "hard"
-syntax on
 colorscheme dracula
 
 "" }}}
@@ -276,16 +300,20 @@ set foldlevelstart=10   " start with fold level of 10
 set dictionary+=/usr/share/dict/words " use dictionary
 set mouse=a " enable mouse support
 set cursorline " highlight current line
+set hidden " allow open other buffer when current buffer is unsave
+
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+" Ignore some filetype
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 " }}}
 " =============================
 " PLUGIN CONFIGURATION {{{
-" css3_syntax {{{
-augroup VimCSS3Syntax
-  autocmd!
-  autocmd FileType css setlocal iskeyword+=-
-augroup END
-" }}}
 " autoformat {{{
 noremap <F4> :Autoformat<CR>
 " }}}
@@ -306,12 +334,6 @@ nnoremap <F6> :MundoToggle<cr>
 " choosewin {{{
 nmap - <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
-" }}}
-" smooth_scroll {{{
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 1)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 1)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 1)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 1)<CR>
 " }}}
 " nerdtree {{{
 map <F3> :NERDTreeToggle<CR>
@@ -338,88 +360,79 @@ nmap ga <Plug>(EasyAlign)
 " autocmd FileType html,css EmmetInstall
 " }}}
 " unti_snips{{{
-" let g:UltiSnipsExpandTrigger="<Tab>"
-" let g:UltiSnipsJumpForwardTrigger="<Tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" let g:UltiSnipsExpandTrigger="<C-y>"
+" let g:UltiSnipsListSnippets="<C-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<C-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+" let g:UltiSnipsEnableSnipMate=0
 " }}}
 " ale {{{
-" Ale check only when save
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-" if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
-" see the status for ALE
-let g:airline#extensions#ale#enabled = 1
-" set linter for js
-let g:ale_linters = {
-    \ 'javascript': ['eslint'],
-    \ 'go': ['gopls'],
-    \}
+" " Ale check only when save
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+" " " if you don't want linters to run on opening a file
+" " let g:ale_lint_on_enter = 0
+" " see the status for ALE
+" let g:airline#extensions#ale#enabled = 1
+" " set linter for js
+" let g:ale_linters = {
+"             \ 'javascript': ['eslint'],
+"             \ 'go': ['gopls'],
+"             \}
 " }}}
 " echodoc {{{
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'floating'
-" To use a custom highlight for the float window,
-" change Pmenu to your highlight group
-highlight link EchoDocFloat Pmenu
+" let g:echodoc#enable_at_startup = 1
+" let g:echodoc#type = 'floating'
+" " To use a custom highlight for the float window,
+" " change Pmenu to your highlight group
+" highlight link EchoDocFloat Pmenu
 " }}}
 " nerdtree-syntax-highlight {{{
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 " }}}
-" airline {{{
-" Enable tabline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" Enable powerline fonts
-let g:airline_powerline_fonts = 1
-" support with devicons
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_airline_statusline = 1
-" }}}"
 " fzf {{{
 " https://github.com/ryanoasis/vim-devicons/issues/106
 function! FZFWithDevIcons()
-  let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}"'
+    let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}"'
 
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
+    function! s:files()
+        let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+        return s:prepend_icon(l:files)
+    endfunction
 
-  function! s:prepend_icon(candidates)
-    let result = []
-    for candidate in a:candidates
-      let filename = fnamemodify(candidate, ':p:t')
-      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
-      call add(result, printf("%s %s", icon, candidate))
-    endfor
+    function! s:prepend_icon(candidates)
+        let result = []
+        for candidate in a:candidates
+            let filename = fnamemodify(candidate, ':p:t')
+            let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
+            call add(result, printf("%s %s", icon, candidate))
+        endfor
 
-    return result
-  endfunction
+        return result
+    endfunction
 
-  function! s:edit_file(items)
-    let items = a:items
-    let i = 1
-    let ln = len(items)
-    while i < ln
-      let item = items[i]
-      let parts = split(item, ' ')
-      let file_path = get(parts, 1, '')
-      let items[i] = file_path
-      let i += 1
-    endwhile
-    call s:Sink(items)
-  endfunction
+    function! s:edit_file(items)
+        let items = a:items
+        let i = 1
+        let ln = len(items)
+        while i < ln
+            let item = items[i]
+            let parts = split(item, ' ')
+            let file_path = get(parts, 1, '')
+            let items[i] = file_path
+            let i += 1
+        endwhile
+        call s:Sink(items)
+    endfunction
 
-  let opts = fzf#wrap({})
-  let opts.source = <sid>files()
-  let s:Sink = opts['sink*']
-  let opts['sink*'] = function('s:edit_file')
-  let opts.options .= l:fzf_files_options
-  call fzf#run(opts)
+    let opts = fzf#wrap({})
+    let opts.source = <sid>files()
+    let s:Sink = opts['sink*']
+    let opts['sink*'] = function('s:edit_file')
+    let opts.options .= l:fzf_files_options
+    call fzf#run(opts)
 
 endfunction
 " }}}"
@@ -430,16 +443,36 @@ xmap dw de
 xmap cw ce
 " }}}"
 " coc.nvim {{{
-" Default is 4000
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+" Default is 4000
+set updatetime=100
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Coc Snippets
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-" Make Tab to move, default is <C-n> <C-p>
+" " Make Tab to move, default is <C-j> <C-k>
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-tab>'
-" Make CR to confirm snip, default is <C-Y>
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Make CR to confirm snip, default is <C-y>
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <C-y> <C-n><C-p><ESC>a
+
 " Coc smartf
 " press <esc> to cancel.
 nmap f <Plug>(coc-smartf-forward)
@@ -448,15 +481,12 @@ nmap ; <Plug>(coc-smartf-repeat)
 nmap , <Plug>(coc-smartf-repeat-opposite)
 
 augroup Smartf
-  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#F05050
-  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+    autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#F05050
+    autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
 augroup end
 
 " Highlight comment json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" Add coc to airline
-let g:airline#extensions#coc#enabled = 1
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -468,12 +498,15 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
+
+" " always show signcolumns
+" set signcolumn=yes
 
 " Highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -483,6 +516,12 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " }}}
 " which_key {{{
@@ -500,15 +539,50 @@ let g:which_key_map.c = { 'name' : '+coc_config' }
 let g:which_key_map.l = { 'name' : '+coc_list' }
 let g:which_key_map.f = { 'name' : '+fzf' }
 let g:which_key_map.e = { 'name' : '+ale' }
-let g:which_key_map.a = { 'name' : 'select_all' }
 let g:which_key_map.p = { 'name' : 'select_last_paste' }
-let g:which_key_map.q = { 'name' : 'force_quit_all' }
-let g:which_key_map.s = { 'name' : 'save_all_and_quit' }
-let g:which_key_map.w = { 'name' : 'write_all' }
+let g:which_key_map.w = { 'name' : '+window' }
+let g:which_key_map.b = { 'name' : '+buffer' }
+let g:which_key_map.g = { 'name' : '+git' }
 " }}}"
 " vim-go {{{
 " disable key binding
 let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
+let g:go_code_completion_enabled = 1
+" }}}
+" vim_ariline {{{
+" Enable powerline fonts
+let g:airline_powerline_fonts = 1
+" Enable extensions
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
+" Use straight bar fot tabline
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+"}}}
+" git_gutter {{{
+" let g:gitgutter_highlight_lines = 1
+" }}}
+" vista {{{
+nnoremap <F2> :Vista!!<CR>
+"FIXME
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_highlight_whole_line=1
+
+let g:vista_default_executive = 'ctags'
+let g:vista_fzf_preview = ['right:50%']
+
+let g:vista_executive_for = {
+  \ 'go': 'ctags',
+  \ 'javascript': 'coc',
+  \ 'javascript.jsx': 'coc',
+  \ 'python': 'ctags',
+  \ }
 " }}}
 
 " }}}
@@ -525,6 +599,21 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunc
+" Toggle transparent
+" https://www.reddit.com/r/vim/comments/74pw75/how_to_toggle_transparent_background_in_vim/
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        set nocursorline
+        let t:is_transparent = 1
+    else
+        set background=dark
+        set cursorline
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap <C-t> : call Toggle_transparent()<CR>
 " }}}
 " =============================
 " AUTO GROUPS {{{

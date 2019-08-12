@@ -23,11 +23,13 @@ alias se=sudoedit
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias image='xclip -sel clip -t image/png -o > '
 alias et='emacs --terminal /dev/tty1'
-alias exat='exa -I="*.pyc" -T --classify'
-alias tree='exa -I="*.pyc" -T --classify'
 alias gd='dotfiles'
 alias g='git'
-alias ls='colorls'
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 
 PATH=$PATH:$HOME/.local/bin

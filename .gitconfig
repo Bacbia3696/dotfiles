@@ -21,3 +21,5 @@
   r    = remote
   rv   = remote -vv
   tree = log --oneline --decorate --all --graph
+[url "git@github.com:"]
+	insteadOf = https://github.com/
