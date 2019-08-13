@@ -44,10 +44,18 @@
     //Snippet
     "coc.preferences.snippetStatusText": "Ⓢ ",
     //emmet
-    "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
+    "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact", "gohtmltmpl": "html"},
+    "emmet.syntaxProfiles": {
+        "html": "xhtml"
+    },
+    "emmet.preferences": {
+    "bem.elementSeparator":"__",
+    "bem.modifierSeparator":"--",
+    "bem.shortElementPrefix":"-"
+    },
     //python
     "python.autoComplete.addBrackets": true,
-   //git
+    //git
     "git.enableGutters": true,
     "git.branchCharacter":"\uf408",
     "git.addGlameToBufferVar": true,
@@ -65,8 +73,8 @@
     "git.changeRemovedSign.text": "▋",
     //diagnostic
     "diagnostic.signOffset": 9999999,
-	"diagnostic.errorSign": "✘",
-	"diagnostic.warningSign": "⚠️",
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "⚠️",
     "diagnostic.displayByAle": false,
     "diagnostic.refreshOnInsertMode": true,
     "snippets.snipmate.enable":false

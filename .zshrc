@@ -65,7 +65,6 @@ ZSH_THEME="spaceship"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     zsh-autosuggestions
-    zsh-completions
     zsh-syntax-highlighting
     vi-mode
     fzf
@@ -74,6 +73,7 @@ plugins=(
     git
     z
 )
+    # zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 

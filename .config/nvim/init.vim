@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 
 " General
 
-" Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair
 Plug 'liuchengxu/vim-which-key' " Displays available keybindings in popup.
 " Plug 'mattn/emmet-vim' " Provides support for expanding abbreviations
 " Plug 'Shougo/echodoc.vim' " Print documents in echo area.
@@ -166,7 +166,7 @@ nnoremap <leader>vs :source $MYVIMRC<CR>:PlugInstall<CR>
 " clear search
 nnoremap <leader>sc :nohl<CR>
 " quit all
-nnoremap <leader>q :qa!<CR>
+nnoremap <leader>q :confirm qa<CR>
 
 " Leader keybind for fzf search
 nnoremap <leader>ff :call FZFWithDevIcons()<CR>
@@ -523,6 +523,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+
 " }}}
 " which_key {{{
 " By default timeoutlen is 1000 ms
@@ -548,7 +549,7 @@ let g:which_key_map.g = { 'name' : '+git' }
 " disable key binding
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
-let g:go_code_completion_enabled = 1
+let g:go_code_completion_enabled = 0
 " }}}
 " vim_ariline {{{
 " Enable powerline fonts
@@ -564,6 +565,10 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = '|'
+" remove the filetype part
+let g:airline_section_x=''
+" remove separators for empty sections
+let g:airline_skip_empty_sections = 1
 "}}}
 " git_gutter {{{
 " let g:gitgutter_highlight_lines = 1
@@ -583,6 +588,10 @@ let g:vista_executive_for = {
   \ 'javascript.jsx': 'coc',
   \ 'python': 'ctags',
   \ }
+" }}}
+" auto_pair{{{
+autocmd FileType html     let b:AutoPairs = AutoPairsDefine({'<!--' : '-->'})
+autocmd FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 " }}}
 
 " }}}

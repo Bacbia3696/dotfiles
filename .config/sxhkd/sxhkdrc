@@ -134,7 +134,7 @@ super + v
     gnome-terminal -e nvim
 # Terminal
 super + Return
-	gnome-terminal
+	kitty
 # Web browser
 super + {_,shift + }w
     google-chrome-stable {_,--app=https://youtube.com} --force-device-scale-factor=1.15
