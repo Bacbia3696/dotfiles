@@ -35,6 +35,7 @@ Plug 'tpope/vim-fugitive' " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-repeat' " Repeat unnative command
 Plug 'tpope/vim-surround' " Surround stuffs
 Plug 'tpope/vim-unimpaired' " Complementary pairs of mappings
+Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands
 Plug 'vim-airline/vim-airline' " Draw a nice statusline
 " Plug 'vim-airline/vim-airline-themes' " A collection of themes for vim-airline
 Plug 'weilbith/nerdtree_choosewin-plugin' " Choosewin for NERDTree
@@ -445,7 +446,7 @@ xmap cw ce
 " coc.nvim {{{
 
 " Better display for messages
-set cmdheight=2
+" set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
