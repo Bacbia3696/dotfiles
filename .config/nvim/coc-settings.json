@@ -49,12 +49,13 @@
         "html": "xhtml"
     },
     "emmet.preferences": {
-    "bem.elementSeparator":"__",
-    "bem.modifierSeparator":"--",
-    "bem.shortElementPrefix":"-"
+        "bem.elementSeparator":"__",
+        "bem.modifierSeparator":"--",
+        "bem.shortElementPrefix":"-"
     },
     //python
     "python.autoComplete.addBrackets": true,
+    "python.jediEnabled": false,
     //git
     "git.enableGutters": true,
     "git.branchCharacter":"\uf408",

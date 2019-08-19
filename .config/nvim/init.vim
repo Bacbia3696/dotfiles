@@ -1,11 +1,24 @@
 " Nguyen Thanh Dat, 30/Jul/2019
 " Credit from VimBootstrap, SpaceVim, dougblack, thinkvim, jarvis
-" =============================
+
+"================================================="
+"               ██                                "
+"              ░░                                 "
+"      ██    ██ ██ ██████████  ██████  █████      "
+"     ░██   ░██░██░░██░░██░░██░░██░░█ ██░░░██     "
+"     ░░██ ░██ ░██ ░██ ░██ ░██ ░██ ░ ░██  ░░      "
+"      ░░████  ░██ ░██ ░██ ░██ ░██   ░██   ██     "
+"       ░░██   ░██ ███ ░██ ░██░███   ░░█████      "
+"        ░░    ░░ ░░░  ░░  ░░ ░░░     ░░░░░       "
+"                                                 "
+"================================================="
+
 
 " PLUG IN {{{
 call plug#begin('~/.vim/plugged')
 
 " General
+"adasd
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair
 Plug 'liuchengxu/vim-which-key' " Displays available keybindings in popup.
@@ -43,11 +56,18 @@ Plug 'Yggdroot/indentLine' " Display the indention levels with thin vertical lin
 Plug 'Chiel92/vim-autoformat' " Format code with one button press
 Plug 'Valloric/MatchTagAlways' " Always highlights the XML/HTML tags that enclose your cursor location
 Plug 'KabbAmine/vCoolor.vim' " Simple color selector/picker
-Plug 'fatih/vim-go' " Adds Go language support
-Plug '/home/dreamer/.fzf' " Local dir for fzf
 " Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column) and stages/undoes hunks
 Plug 'liuchengxu/vista.vim' " Viewer & Finder for LSP symbols and tags
 Plug 'Bacbia3696/vim-snippets' " Contains snippets files for various programming languages
+Plug 'vimwiki/vimwiki' " A personal wiki for Vim
+
+" Go
+Plug 'fatih/vim-go' " Adds Go language support
+
+" SQL
+Plug 'shmup/vim-sql-syntax' " More complete SQL syntax
+
+
 " This plugin should load last in line
 Plug 'ryanoasis/vim-devicons' " Adds file type glyphs/icons to popular Vim plugins
 
@@ -138,6 +158,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+cnoreabbrev Set set
 
 " Easy expansion of the active file directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -147,6 +168,13 @@ inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
 cnoremap <C-j> <C-n>
 cnoremap <C-k> <C-p>
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nnoremap <F5> :make<CR>
 
 " }}}
 " =============================
@@ -218,13 +246,6 @@ nnoremap <leader>bl :ls<CR>
 nnoremap <leader>bh :Startify<CR>
 nnoremap <leader>ba ggVG<CR>
 
-" Window hotkey
-nnoremap <leader>wq :q!<CR>
-nnoremap <leader>wQ :qa!<CR>
-nnoremap <leader>ww :wq<CR>
-nnoremap <leader>wW :wqa<CR>
-nnoremap <leader>wo :on<CR>
-
 " Coc
 nnoremap <leader>cc :CocCommand<CR>
 nnoremap <leader>cf :CocConfig<CR>
@@ -239,6 +260,8 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gr :Gremove<CR>
 nnoremap <Leader>go :.Gbrowse<CR>
+
+noremap <Leader>y "*y
 
 " }}}
 " =============================
@@ -262,6 +285,7 @@ colorscheme dracula
 " =============================
 " CHANGE DEFAULT BEHAVIOR {{{
 
+set clipboard=unnamedplus " use main clipboard
 set noshowmode " don't dispay mode in command line (airilne already shows it)
 set number relativenumber " show relative number
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable autocomment the next line
@@ -269,7 +293,6 @@ set tabstop=4       " number of visual spaces per TAB
 set shiftwidth=4    " number of space move for 1 shift
 set expandtab       " tabs are spaces
 set wrap linebreak  " make break line
-set clipboard=unnamed,unnamedplus " use main clipboard
 set ignorecase smartcase " use smart case
 let g:python3_host_prog="/home/dreamer/.pyenv/nvim/bin/python3" " set default python path
 set pyx=3 " set pythonx
@@ -305,18 +328,47 @@ set hidden " allow open other buffer when current buffer is unsave
 
 "" Remember cursor position
 augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
 " Ignore some filetype
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+
+" Open as readonly opened file
+autocmd SwapExists * let v:swapchoice = "o"
+
+" Disable notify when open readonly file
+let s:IgnoreChange=0
+autocmd! FileChangedRO * nested
+            \ let s:IgnoreChange=1 |
+            \ call system("p4 edit " . expand("%")) |
+            \ set noreadonly
+autocmd! FileChangedShell *
+            \ if 1 == s:IgnoreChange |
+            \   let v:fcs_choice="" |
+            \   let s:IgnoreChange=0 |
+            \ else |
+            \   let v:fcs_choice="ask" |
+            \ endif
+
+" Display some line when scrolling, sensible.vim
+if !&scrolloff
+    set scrolloff=1
+endif
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
 
 " }}}
 " =============================
 " PLUGIN CONFIGURATION {{{
 " autoformat {{{
 noremap <F4> :Autoformat<CR>
+autocmd filetype sql,python,java,css au BufWrite * :Autoformat " format on save
+" https://github.com/darold/pgFormatter
+let g:formatters_sql = ['custom_sql']
+let g:formatdef_custom_sql = '"pg_format"'
 " }}}
 " multi_cursor {{{
 " Default mapping
@@ -455,7 +507,7 @@ set updatetime=300
 set shortmess+=c
 
 " always show signcolumns
-set signcolumn=yes
+" set signcolumn=yes
 " Default is 4000
 set updatetime=100
 
@@ -584,11 +636,11 @@ let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
 
 let g:vista_executive_for = {
-  \ 'go': 'ctags',
-  \ 'javascript': 'coc',
-  \ 'javascript.jsx': 'coc',
-  \ 'python': 'ctags',
-  \ }
+            \ 'go': 'ctags',
+            \ 'javascript': 'coc',
+            \ 'javascript.jsx': 'coc',
+            \ 'python': 'ctags',
+            \ }
 " }}}
 " auto_pair{{{
 autocmd FileType html     let b:AutoPairs = AutoPairsDefine({'<!--' : '-->'})
@@ -637,6 +689,12 @@ augroup configgroup
     autocmd TermOpen * setlocal statusline=%{b:term_title}
     autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
     autocmd BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
+augroup END
+
+augroup runcode
+    autocmd!
+    autocmd FileType go nnoremap <buffer> <F5> :GoRun<CR>
+    autocmd FileType python nnoremap <buffer> <F5> :!python %<CR>
 augroup END
 " }}}
 " =============================
