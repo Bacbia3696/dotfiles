@@ -1,0 +1,11 @@
+node_modules/
+.projections.json
+.air.toml
+.DS_Store
+.vscode
+coverage.out
+go.work
+go.work.sum
+target/
+.nlsp-settings/
+.neoconf.json
