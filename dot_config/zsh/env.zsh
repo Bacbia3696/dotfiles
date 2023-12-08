@@ -14,7 +14,7 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --layout default
   --header 'Press CTRL-Y to copy command into clipboard'"
-export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+#export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 export FZF_DEFAULT_OPTS="--reverse --height 60% --cycle --border \
   --color='info:cyan,border:magenta,gutter:-1'"
 
