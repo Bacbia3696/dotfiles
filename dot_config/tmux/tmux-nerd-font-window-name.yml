@@ -1,7 +1,16 @@
 config:
-  fallback-icon: "?" # icon to use if no definition is found
-  multi-pane-icon: "" # icon to use for window with multiple panes, if not specified, only active pane's icon will used as the default.
-  show-name: true # show the window name with the icon
+  fallback-icon: "❓"
+  multi-pane-icon: "🪟"
+  show-name: false
 
 icons:
-  cmatrix: "🤯" # add new entries that aren't included
+  htop: "📈"
+  btm: "📈"
+  bun: "🥟"
+  docker: "🐳"
+  fish: "🐠"
+  zsh: "🛠️"
+  nvim: "📝"
+  overmind: "👀"
+  stripe-mock: "💳"
+  stripe: "💳"

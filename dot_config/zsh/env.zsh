@@ -10,11 +10,10 @@ export FZF_CTRL_T_OPTS="
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
   --color header:italic
   --layout default
   --header 'Press CTRL-Y to copy command into clipboard'"
-#export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 export FZF_DEFAULT_OPTS="--reverse --height 60% --cycle --border \
   --color='info:cyan,border:magenta,gutter:-1'"
 
