@@ -4,13 +4,12 @@ config:
   show-name: false
 
 icons:
-  htop: "📈"
-  btm: "📈"
+  # htop: "📈"
+  # btm: "📈"
   bun: "🥟"
   docker: "🐳"
   fish: "🐠"
-  zsh: "🛠️"
-  nvim: "📝"
-  overmind: "👀"
+  # zsh: "🛠️"
+  # nvim: "📝"
   stripe-mock: "💳"
   stripe: "💳"

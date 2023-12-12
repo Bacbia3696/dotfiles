@@ -17,9 +17,13 @@ alias c=cargo
 alias g=git
 alias p=pnpm
 alias px=pnpx
+alias vim=nvim
 alias e=nvim
 alias cl=clear
 alias bathelp="bat -p -l help"
 alias ssh='TERM=xterm-256color ssh'
 alias open=xdg-open
 alias lc="nvim leetcode.nvim"
+alias lg=lazygit
+alias rg='rg --no-heading'
+alias t=tmux

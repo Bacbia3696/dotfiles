@@ -4,7 +4,6 @@
 	name = DatNguyen
 	signingkey = 91F54E8CCC8D93AA
 [core]
-	pager = delta
 	editor = nvim
 	excludesfile = ~/.gitignore_global
 [alias]
@@ -18,40 +17,27 @@
 	b = branch
 	ba = branch -a
 	c = commit
-	cf = config
-	cfl = config --local
+	cm = commit -m
+	cf = config --local
 	root = rev-parse --show-toplevel
 	cam = commit -am
 	cfix = commit --amend
 	cl = clone
-	clf = clean -f
-	cln = clean -n
-	cm = commit -m
 	d = diff
+	w = worktree
 	dh = diff HEAD
 	ds = diff --staged
 	f = fetch
-	i = init
-	ib = init --bare
 	k = checkout
-	kk = checkout .
 	kb = checkout -b
 	kt = checkout --theirs
 	ko = checkout --ours
 	l = log
 	lg = log --graph --oneline --all --decorate
-	lo = log --oneline
 	ls = ls-files
 	m = merge
-	n = init
-	o = show
 	p = push
-	pf = push --force
 	rb = rebase
-	rmc = rm --cached
-	rs = reset
-	rt = restore
-	rv = revert
 	s = status
 	ss = stash
 	u = pull
@@ -62,19 +48,31 @@
 [init]
 	defaultBranch = main
 
-[interactive]
-    diffFilter = delta --color-only
-[add.interactive]
-    useBuiltin = false # required for git 2.37.0
-[delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-    plus-style = syntax "#003a00"
-    side-by-side = false
-[diff]
-	colorMoved = default
-
 [commit]
 	gpgsign = true
 [push]
 	followTags = true
+
+# delta config
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/delta/tokyonight_moon.gitconfig
+[delta]
+  minus-style                   = syntax "#3a273a"
+  minus-non-emph-style          = syntax "#3a273a"
+  minus-emph-style              = syntax "#6b2e43"
+  minus-empty-line-marker-style = syntax "#3a273a"
+  line-numbers-minus-style      = "#b55a67"
+  plus-style                    = syntax "#273849"
+  plus-non-emph-style           = syntax "#273849"
+  plus-emph-style               = syntax "#305f6f"
+  plus-empty-line-marker-style  = syntax "#273849"
+  line-numbers-plus-style       = "#627259"
+  line-numbers-zero-style       = "#3b4261"
+
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default

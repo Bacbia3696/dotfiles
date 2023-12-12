@@ -1,20 +1,22 @@
+export PROMPT_EOL_MARK='󰌑'
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# LESS flags
+export LESS='-SRXF'
+
+# default editor is neovim
+export VISUAL=nvim
+export EDITOR=$VISUAL
+
+# golang env
+export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+# gvm
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && \
+    source "$HOME/.gvm/scripts/gvm"
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-enable-fzf-tab
-
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with tree or file with bat
-zstyle ':fzf-tab:complete:(nvim|cp|mv|cd):*' fzf-preview '([[ -d $realpath ]] && tree -C $realpath) || bat $realpath --color always'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-zstyle ':fzf-tab:*' fzf-min-height 20
 
 #pyenv
 export PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
@@ -28,7 +30,21 @@ source <(kubectl completion zsh) # setup autocomplete in zsh into the current sh
 # pnpm
 export PNPM_HOME="/home/datnt/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# DOCKER
+# export DOCKER_BUILDKIT=1
+# export COMPOSE_DOCKER_CLI_BUILD=1
+# export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+
+#### Image ####
+#Display specs
+#neofetch
+#Display Pokemon
+#pokemon-colorscripts --no-title -r 1,3,6
+#Display random gifs
+kitten icat --align left $(find $HOME/.config/neofetch/gifs/ -name "*.gif" | sort -R | head -1)
