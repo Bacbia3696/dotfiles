@@ -23,6 +23,7 @@
 	cam = commit -am
 	cfix = commit --amend
 	cl = clone
+  cl1 = clone --depth=1
 	d = diff
 	w = worktree
 	dh = diff HEAD
@@ -55,7 +56,7 @@
 
 # delta config
 [core]
-  pager = delta
+  pager = delta --paging=always
 [interactive]
   diffFilter = delta --color-only
 # https://github.com/folke/tokyonight.nvim/blob/main/extras/delta/tokyonight_moon.gitconfig

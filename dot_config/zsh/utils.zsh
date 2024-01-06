@@ -27,6 +27,9 @@ eval "$(pyenv virtualenv-init -)"
 
 source <(kubectl completion zsh) # setup autocomplete in zsh into the current shell
 
+# nvm
+source /usr/share/nvm/init-nvm.sh
+
 # pnpm
 export PNPM_HOME="/home/datnt/.local/share/pnpm"
 case ":$PATH:" in
@@ -34,6 +37,10 @@ case ":$PATH:" in
     *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # DOCKER
 # export DOCKER_BUILDKIT=1
@@ -47,4 +54,4 @@ esac
 #Display Pokemon
 #pokemon-colorscripts --no-title -r 1,3,6
 #Display random gifs
-kitten icat --align left $(find $HOME/.config/neofetch/gifs/ -name "*.gif" | sort -R | head -1)
+[[ -z "$NVIM" ]] && kitten icat --align left "$(find $HOME/.config/neofetch/gifs/ -name '*.gif' | sort -R | head -1)"

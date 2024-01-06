@@ -1,4 +1,4 @@
-function pe() {
+function py() {
     if [ "$#" -eq 0 ]; then
         pyenv shell --unset
     else
